@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Position Size Calculator</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Primetrex Forex Calculator</h1>
+        <p class="subtitle">Calculate your position size based on risk</p>
+
+        <form id="forexForm">
+            <div class="form-group">
+                <label for="tradingPair">Trading Instrument</label>
+                <select id="tradingPair" required>
+                    <option value="">Select an instrument...</option>
+                    <option value="GOLD">GOLD (XAU/USD)</option>
+                    <option value="CURRENCY">Currency Pairs</option>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="NAS100">NASDAQ 100</option>
+                    <option value="US30">US30 (Dow Jones)</option>
+                    <option value="GER40">GER40 (DAX)</option>
+                    <option value="OIL">Oil</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="accountSize">Account Size (USD)</label>
+                <div class="input-icon">
+                    <input type="number" id="accountSize" step="0.01" min="0" placeholder="Enter your account balance" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Risk Type</label>
+                <div class="toggle-container">
+                    <span class="toggle-label">Percentage (%)</span>
+                    <div class="toggle-wrapper">
+                        <input type="checkbox" id="riskToggle" class="toggle-checkbox">
+                        <label for="riskToggle" class="toggle-switch"></label>
+                    </div>
+                    <span class="toggle-label">Fixed Amount ($)</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="riskValue">
+                    Risk Amount
+                    <span class="risk-type-display" id="riskTypeDisplay">%</span>
+                </label>
+                <input type="number" id="riskValue" step="0.01" min="0" placeholder="Enter risk amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="slPips">Stop Loss (Pips)</label>
+                <input type="number" id="slPips" step="0.1" min="0.1" placeholder="Enter stop loss in pips" required>
+            </div>
+
+            <button type="submit" class="calculate-btn">Calculate Lot Size</button>
+        </form>
+
+        <div class="result-container" id="resultContainer">
+            <div class="instrument-badge" id="instrumentBadge"></div>
+            <div class="result-label">Recommended Lot Size</div>
+            <div class="result-value">
+                <span id="lotSize">0.00</span>
+                <span class="result-unit">lots</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link JS -->
+    <script src="script.js"></script>
+</body>
+</html>
