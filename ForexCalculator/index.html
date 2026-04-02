@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forex Position Size Calculator</title>
-
-    <!-- Link CSS -->
+    <title>Primetrex Forex Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,13 +11,24 @@
         <h1>Primetrex Forex Calculator</h1>
         <p class="subtitle">Calculate your position size based on risk</p>
 
+        <!-- Mode Switch: Pips vs Price -->
+        <div class="mode-switch-wrapper">
+            <span class="mode-label" id="modeLabelPips">Pips Mode</span>
+            <div class="mode-switch-track" id="modeSwitchTrack">
+                <div class="mode-switch-thumb" id="modeSwitchThumb"></div>
+            </div>
+            <span class="mode-label" id="modeLabelPrice">Price Mode</span>
+        </div>
+        <p class="mode-description" id="modeDescription">Enter stop loss in pips</p>
+
         <form id="forexForm">
             <div class="form-group">
                 <label for="tradingPair">Trading Instrument</label>
                 <select id="tradingPair" required>
                     <option value="">Select an instrument...</option>
                     <option value="GOLD">GOLD (XAU/USD)</option>
-                    <option value="CURRENCY">Currency Pairs</option>
+                    <option value="CURRENCY_USD">Currency Pairs — USD (EUR/USD, GBP/USD…)</option>
+                    <option value="CURRENCY_JPY">Currency Pairs — JPY (USD/JPY, EUR/JPY…)</option>
                     <option value="BTC">Bitcoin (BTC)</option>
                     <option value="ETH">Ethereum (ETH)</option>
                     <option value="NAS100">NASDAQ 100</option>
@@ -56,9 +65,24 @@
                 <input type="number" id="riskValue" step="0.01" min="0" placeholder="Enter risk amount" required>
             </div>
 
-            <div class="form-group">
-                <label for="slPips">Stop Loss (Pips)</label>
-                <input type="number" id="slPips" step="0.1" min="0.1" placeholder="Enter stop loss in pips" required>
+            <!-- PIPS MODE fields -->
+            <div id="pipsModeFields">
+                <div class="form-group">
+                    <label for="slPips">Stop Loss (Pips)</label>
+                    <input type="number" id="slPips" step="0.1" min="0.1" placeholder="Enter stop loss in pips">
+                </div>
+            </div>
+
+            <!-- PRICE MODE fields -->
+            <div id="priceModeFields" class="hidden">
+                <div class="form-group">
+                    <label for="entryPrice">Entry Price</label>
+                    <input type="number" id="entryPrice" step="0.00001" min="0" placeholder="Enter entry price">
+                </div>
+                <div class="form-group">
+                    <label for="stopLossPrice">Stop Loss Price</label>
+                    <input type="number" id="stopLossPrice" step="0.00001" min="0" placeholder="Enter stop loss price">
+                </div>
             </div>
 
             <button type="submit" class="calculate-btn">Calculate Lot Size</button>
@@ -66,15 +90,34 @@
 
         <div class="result-container" id="resultContainer">
             <div class="instrument-badge" id="instrumentBadge"></div>
-            <div class="result-label">Recommended Lot Size</div>
-            <div class="result-value">
-                <span id="lotSize">0.00</span>
-                <span class="result-unit">lots</span>
+
+            <!-- Price mode extra rows -->
+            <div id="priceResultRows" class="hidden">
+                <div class="result-row">
+                    <span class="result-label">Price Difference</span>
+                    <span class="result-value" id="priceDiff">0.00</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Derived SL (Pips)</span>
+                    <span class="result-value" id="derivedPips">0.00</span>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <span class="result-label">Risk Amount ($)</span>
+                <span class="result-value" id="riskAmountDisplay">$0.00</span>
+            </div>
+
+            <div class="lot-size-highlight">
+                <div class="lot-size-label">Recommended Lot Size</div>
+                <div class="lot-size-value">
+                    <span id="lotSize">0.00</span>
+                    <span class="lot-size-unit">lots</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Link JS -->
     <script src="script.js"></script>
 </body>
 </html>
