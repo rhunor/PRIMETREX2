@@ -164,60 +164,19 @@ input[type="number"]:focus {
     pointer-events: none;
 }
 
-/* ── Risk Type Toggle ── */
-.toggle-container {
-    display: flex;
-    align-items: center;
-    gap: 14px;
+/* ── Risk Type Toggle (same style as mode switch) ── */
+.risk-switch-wrapper {
     background: #f3f4f6;
     padding: 13px 16px;
     border-radius: 12px;
+    justify-content: flex-start;
 }
 
-.toggle-label {
-    font-weight: 600;
-    color: #374151;
-    font-size: 13px;
+.mode-switch-track.toggled {
+    background: #7c3aed;
 }
 
-.toggle-wrapper {
-    position: relative;
-    width: 56px;
-    height: 28px;
-    flex-shrink: 0;
-}
-
-.toggle-checkbox {
-    display: none;
-}
-
-.toggle-switch {
-    position: absolute;
-    cursor: pointer;
-    inset: 0;
-    background-color: #d1d5db;
-    border-radius: 999px;
-    transition: background-color 0.35s;
-}
-
-.toggle-switch::before {
-    content: "";
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.toggle-checkbox:checked + .toggle-switch {
-    background-color: #7c3aed;
-}
-
-.toggle-checkbox:checked + .toggle-switch::before {
+.mode-switch-track.toggled .mode-switch-thumb {
     transform: translateX(28px);
 }
 

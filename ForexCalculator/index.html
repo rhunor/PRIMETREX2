@@ -47,13 +47,12 @@
 
             <div class="form-group">
                 <label>Risk Type</label>
-                <div class="toggle-container">
-                    <span class="toggle-label">Percentage (%)</span>
-                    <div class="toggle-wrapper">
-                        <input type="checkbox" id="riskToggle" class="toggle-checkbox">
-                        <label for="riskToggle" class="toggle-switch"></label>
+                <div class="mode-switch-wrapper risk-switch-wrapper">
+                    <span class="mode-label active" id="riskLabelPct">Percentage (%)</span>
+                    <div class="mode-switch-track" id="riskSwitchTrack">
+                        <div class="mode-switch-thumb"></div>
                     </div>
-                    <span class="toggle-label">Fixed Amount ($)</span>
+                    <span class="mode-label" id="riskLabelFixed">Fixed Amount ($)</span>
                 </div>
             </div>
 
