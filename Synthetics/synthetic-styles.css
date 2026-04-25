@@ -2,7 +2,7 @@
    PRIMETREX INDICES CALCULATOR — styles.css
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
 
 * {
     margin: 0;
@@ -31,20 +31,53 @@ body {
 }
 
 h1 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: #1a1a2e;
-    font-size: 26px;
+    font-size: clamp(17px, 4.5vw, 22px);
     font-weight: 800;
     margin-bottom: 6px;
     text-align: center;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.4px;
+    line-height: 1.25;
+    word-break: break-word;
 }
 
 .subtitle {
     color: #6b7280;
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
     font-size: 13.5px;
+}
+
+.nav-link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto 24px;
+    padding: 9px 20px;
+    background: transparent;
+    border: 1.5px solid #7c3aed;
+    border-radius: 50px;
+    color: #7c3aed;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    letter-spacing: 0.2px;
+    width: fit-content;
+}
+
+.nav-link-btn:hover {
+    background: #7c3aed;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.nav-link-btn svg {
+    flex-shrink: 0;
 }
 
 /* ── Form ── */
@@ -311,15 +344,40 @@ input[type="number"]:focus {
 
 .lot-size-value {
     color: white;
-    font-family: 'Syne', sans-serif;
-    font-size: 38px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(28px, 8vw, 38px);
     font-weight: 800;
     line-height: 1.1;
 }
 
 .lot-size-unit {
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 18px);
     font-weight: 600;
     opacity: 0.75;
     margin-left: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .calculator-container {
+        padding: 28px 20px;
+        border-radius: 18px;
+    }
+
+    .nav-link-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .subtitle {
+        font-size: 12.5px;
+    }
+
+    .result-value {
+        font-size: 13px;
+    }
+
+    .result-label {
+        font-size: 12px;
+    }
 }
